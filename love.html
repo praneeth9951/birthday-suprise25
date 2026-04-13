@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff4d6d, #ff758c);
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Pages */
+.page {
+  display: none;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.active {
+  display: flex;
+}
+
+/* Button */
+button {
+  padding: 12px 25px;
+  border-radius: 25px;
+  background: white;
+  color: #ff4d6d;
+  font-size: 16px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Image */
+img {
+  width: 220px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+/* Hearts */
+.heart {
+  position: absolute;
+  color: pink;
+  animation: float 5s linear infinite;
+}
+h1 {
+  max-width: 80%;
+  margin: auto;
+  line-height: 1.5;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh); opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="music.mp3">
+</audio>
+
+<!-- Page 1 -->
+<div class="page active" id="p1">
+  <h1>Hey Love 💖</h1>
+  <button onclick="start()">Start ❤️</button>
+</div>
+
+<!-- Page 2 -->
+<div class="page" id="p2">
+  <h1 id="t2"></h1>
+  <button onclick="next(3)">Next 💫</button>
+</div>
+
+<!-- Page 3 -->
+<div class="page" id="p3">
+  <h1 id="t3"></h1>
+  <img src="my-image.jpeg" alt="Love Image">
+  <button onclick="next(4)">NEXT 💖</button>
+</div>
+
+<!-- Page 4 -->
+<div class="page" id="p4">
+  <h1 id="t4"></h1>
+  <h2>❤️ I Love You ❤️</h2>
+  <button onclick="next(5)">Finally 💖</button>
+</div>
+
+<!-- Page 5 -->
+<div class="page" id="p5">
+  <h1 id="t5"></h1>
+  <h2>❤️ I Love You ❤️</h2>
+</div>
+
+<script>
+function show(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('p' + page).classList.add('active');
+}
+
+/* Typing effect */
+function type(id, text) {
+  let el = document.getElementById(id);
+  el.innerHTML = "";
+  let i = 0;
+  let interval = setInterval(() => {
+    el.innerHTML += text[i];
+    i++;
+    if (i >= text.length) clearInterval(interval);
+  }, 40);
+}
+
+/* Start */
+function start() {
+  document.getElementById("music").play();
+  show(2);
+  type("t2", "Many Many Many more happy returns of the Chittiiiiiiiiiiii bngrm 💕😘💫");
+}
+
+/* Next pages */
+function next(page) {
+  show(page);
+
+  if (page === 3) {
+    type("t3", "Nuvu ante  entha eshtam ante adi matalo chepalenu ala ani neku ela chuyinchalo thaledhu❤️. Nuvvu naku chala special❤️. Nuvvu naku chala ishtam❤️. Nuvvu naku chala important. Nenu chala sarlu badha petadanu daniki i am really sorry😭.  A roju kuda ninnu badha petali ani anukoledhu, kani anukokunda ne chala sarlu jarigipoyindi because of my charachter. But ne prema mundu na  prema chala thakuva but ala ani, ala ani na prema matram abhadam kadhu adi heartful ga love chesina nenu ninnu😍. The day i see you first time i am very excited and i am always feel same when i see you now as well😘. Nuvu naku echina prathi moment na life lo chala special adi appatiki marichipolenu🥰. Nuvu naku amma laga prema chuyinchavu. Nanna laga resposiblelity neripichavu, friend laga support chesavu and finally prema thoo nannu chala change chesavu😍❤️. Adi naku life long kavali ani undi but devudu ela rasado ala jarugutundi ani anukuntuna nenu matram💕. Avaru ana ochi ne me prema ki name m ana undi ante adi artham kavali ante life time saripodhu ani chepali anipisthadi😍. And the only word only i can say from bottom of my heart is I LOVE YOU❤️");
+  }
+
+    if (page === 4) {
+    type("t4", "Elanti birthday lu mari eno jarupukovali ani manusupurthiga korukuntuna. I love you chitti beta😍");
+  }
+
+  if (page === 5) {
+    type("t5", "My love for you is forever 💞. I wish you many many more happy returns of the day❤️. I LOVE YOU ❤️.");
+  }
+}
+
+/* Floating hearts */
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}, 300);
+</script>
+
+</body>
+</html>
